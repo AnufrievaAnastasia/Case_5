@@ -46,8 +46,9 @@ with open('input.txt') as inp_file:
         # To group the parameters for each player.
 
         player = name + ' ' + comp + ' ' + att + ' ' + yds + ' ' + td + ' ' + int + ' ' + '{0:.2f}'.format(pass_rate) + '\n'
-        
+
         # Print values to a new file.
+
         out_file.write(player)
         line = inp_file.readline()
 
