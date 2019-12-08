@@ -8,6 +8,8 @@ import urllib.request
 
 out_file = open('output.txt', 'w')
 
+# To open a file containing links.
+
 with open('input.txt') as inp_file:
     line = inp_file.readline()
     while line != '':
@@ -41,7 +43,11 @@ with open('input.txt') as inp_file:
         d = 2.375 - (float(int) / float(att) * 25)
         pass_rate = ((a + b + c + d) / 6) * 100
 
+        # To group the parameters for each player.
+
         player = name + ' ' + comp + ' ' + att + ' ' + yds + ' ' + td + ' ' + int + ' ' + '{0:.2f}'.format(pass_rate) + '\n'
+        
+        # Print values to a new file.
         out_file.write(player)
         line = inp_file.readline()
 
