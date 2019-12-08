@@ -6,11 +6,10 @@
 """
 import urllib.request
 
-output_file = open('output.txt', 'w')
-output_file.close()
+out_file = open('output.txt', 'w')
 
-with open('input.txt') as out_file:
-    line = out_file.readline()
+with open('input.txt') as inp_file:
+    line = inp_file.readline()
     while line != '':
         url = line
         f = urllib.request.urlopen(url)
@@ -27,14 +26,25 @@ with open('input.txt') as out_file:
         total = total.replace('</d>', '')
         total = total.split()
         comp = total[0]
+        comp = comp.replace(',', '')
         att = total[1]
+        att = att.replace(',', '')
         yds = total[3]
+        yds = yds.replace(',', '')
         td = total[5]
+        td = td.replace(',', '')
         int = total[6]
-        player = name + ' ' + comp + ' ' + att + ' ' + yds + ' ' + td + ' ' + int
+        int = int.replace(',', '')
+        a = (float(comp) / float(att) - 0.3) * 5
+        b = (float(yds) / float(att) - 3) * 0.25
+        c = (float(td) / float(att)) * 20
+        d = 2.375 - (float(int) / float(att) * 25)
+        pass_rate = ((a + b + c + d) / 6) * 100
+
+        player = name + ' ' + comp + ' ' + att + ' ' + yds + ' ' + td + ' ' + int + ' ' + '{0:.2f}'.format(pass_rate) + '\n'
+        out_file.write(player)
+        line = inp_file.readline()
 
 
 
-        print(player)
-        line = out_file.readline()
 
